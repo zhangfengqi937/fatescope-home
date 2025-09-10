@@ -119,8 +119,13 @@ export default function HeroAurora() {
 
         <div className="mt-2 h-1.5 w-28 rounded-full bg-gradient-to-r from-amber-400 via-lime-400 to-emerald-400" />
 
+        <p className="mt-4 text-lg italic text-slate-600 max-w-2xl">
+          “我最终要留下的，不是作品，而是：让某个人愿意活下去的理由。”
+        </p>
+
         <p className="mt-4 text-lg md:text-xl text-slate-700 max-w-3xl zh-leading">
           Photography · Writing · Fatescope App — Cloud-based Independent Astrology × Psychology & Philosophy × Spirituality, guiding healing and clarity in creation.       </p>
+
 
         {/* 标签按钮（chip） */}
         <div className="mt-5 flex flex-wrap gap-2 text-sm md:text-base">
