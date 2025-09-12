@@ -11,22 +11,37 @@ import TerminalChangelogDigest from "@/components/TerminalChangelogDigest";
 
 import { NotebookPen, Camera, AppWindow, Globe, Mail } from "lucide-react";
 import InstagramBrandIcon from "@/components/InstagramBrandIcon";
+import SpotifyEmbed from '@/components/SpotifyEmbed';
 
 const iconCls = "h-4 w-4 mr-1.5 translate-y-[1px] opacity-80";
 
 
 const photos = [
-  "/images/17.jpg",
+
   "/images/01.jpg", "/images/02.jpg", "/images/03.jpg", "/images/04.jpg",
   "/images/05.jpg", "/images/06.jpg", "/images/07.jpg", "/images/08.jpg",
   "/images/09.jpg", "/images/10.jpg", "/images/11.jpg", "/images/12.jpg",
   "/images/13.jpg", "/images/14.jpg", "/images/15.jpg", "/images/16.jpg",
-
+  "/images/17.jpg",
 ];
 
 export default function HomeEn() {
   return (
     <main className="max-w-6xl mx-auto px-6">
+
+
+
+      <SpotifyEmbed
+        url="https://open.spotify.com/track/5VuwAhMCz9EMg3RHL1KUEr" // 🎵 《Merry Christmas, Mr. Lawrence》
+        theme="light"
+        height={152}
+      />
+      <p className="mt-4 text-base text-center italic text-slate-500">
+        “It’s important to live your life the way you want to. It’s not about how long you live.” —Ryuichi Sakamoto
+      </p>
+
+
+
       {/* Hero — cool tone */}
       <HeroAuroraCool />
 
@@ -451,7 +466,7 @@ export default function HomeEn() {
                   <Mail className="h-4 w-4 mr-2" />
                   Email
                 </Button>
-              {/*<Button
+                {/*<Button
                   href="https://forms.gle/your-form"
                   variant="secondary"
                   size="sm"
@@ -462,7 +477,7 @@ export default function HomeEn() {
                   <NotebookPen className="h-4 w-4 mr-2" />
                   Let’s Collaborate
                 </Button> */}
-                
+
 
                 <a
                   href="mailto:contact@fatescope.com"
@@ -541,7 +556,7 @@ export default function HomeEn() {
               </p>
 
               <p className="mt-6 italic text-slate-500 text-[14px] leading-6">
-                 Exploring how technology and spirituality intersect, turning engineering thinking into healing and creation.
+                Exploring how technology and spirituality intersect, turning engineering thinking into healing and creation.
               </p>
 
             </div>

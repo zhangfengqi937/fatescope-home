@@ -124,7 +124,7 @@ export default function HeroAuroraCool() {
         
 
         <p className="mt-4 text-lg italic text-slate-600 max-w-2xl">
-          “My true legacy is not the works I create, but the reason someone chooses to live on.”
+          My true legacy is not the works I create, but the reason someone chooses to live on.
         </p>
         
 

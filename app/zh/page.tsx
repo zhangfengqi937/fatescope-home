@@ -13,16 +13,18 @@ import { NotebookPen, Camera, AppWindow, Globe, Mail } from "lucide-react";
 import InstagramBrandIcon from "@/components/InstagramBrandIcon";
 
 import TerminalChangelogDigest from '@/components/TerminalChangelogDigest';
+import SpotifyEmbed from '@/components/SpotifyEmbed';
 
 
 const iconCls = "h-4 w-4 mr-1.5 translate-y-[1px] opacity-80";
 
 const photos = [
-  "/images/17.jpg",
+
   "/images/01.jpg", "/images/02.jpg", "/images/03.jpg", "/images/04.jpg",
   "/images/05.jpg", "/images/06.jpg", "/images/07.jpg", "/images/08.jpg",
   "/images/09.jpg", "/images/10.jpg", "/images/11.jpg", "/images/12.jpg",
   "/images/13.jpg", "/images/14.jpg", "/images/15.jpg", "/images/16.jpg",
+  "/images/17.jpg",
 ];
 
 export default function Home() {
@@ -30,6 +32,15 @@ export default function Home() {
   return (
 
     <main className="max-w-6xl mx-auto px-6">
+
+      <SpotifyEmbed
+        url="https://open.spotify.com/track/5VuwAhMCz9EMg3RHL1KUEr" // 🎵 《Merry Christmas, Mr. Lawrence》
+        theme="light"
+        height={152}
+      />
+      <p className="mt-4 text-base text-center italic text-slate-500">
+        “重要的是按自己的方式活，不是活得多长。” —坂本龙一
+      </p>
       {/* 1) Hero（渐变 + 可选淡背景图） */}
       <HeroAurora />
 
@@ -443,7 +454,7 @@ export default function Home() {
                   Email
                 </Button>
 
-              {/*<Button
+                {/*<Button
                   href="https://forms.gle/your-form"
                   variant="secondary"
                   size="sm"
