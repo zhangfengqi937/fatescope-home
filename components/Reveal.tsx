@@ -1,8 +1,9 @@
 // components/Reveal.tsx
 import { useEffect, useRef, useState } from "react";
+import React from 'react';
 
 type Props = {
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
   children: React.ReactNode;
   className?: string;
   /** ms，进入视口后延迟开始动画 */
