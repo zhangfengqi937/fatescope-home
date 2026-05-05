@@ -3,7 +3,7 @@ import fs from 'fs/promises';
 import path from 'path';
 
 type Item = { date: string; version?: string; title: string; items?: string[] };
-type Data = { web?: Item[]; app?: Item[] };
+type Data = { web?: Item[]; app?: Item[]; kairos?: Item[] };
 
 export const metadata = {
   title: 'Changelog — Fatescope',
@@ -16,24 +16,29 @@ export default async function Page() {
 
   const web = [...(data.web || [])].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
   const app = [...(data.app || [])].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  const kairos = [...(data.kairos || [])].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
   return (
     <section className="py-12">
-      <div className="mx-auto max-w-5xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <h1 className="text-[28px] md:text-[34px] font-semibold tracking-tight text-slate-900">
           Changelog
         </h1>
         <p className="mt-2 text-slate-600">
-          Left for my <b>Homepage</b>，Right for <b>Fatescope App</b>. All from same file - <code>changes.json</code>。
+          All from <code>changes.json</code> — <b>Homepage</b> · <b>Fatescope App</b> · <b>KAIROS</b>
         </p>
 
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
           <TerminalPanel title="Homepage" cmd="tail -n all WEB_CHANGELOG">
             <LogList items={web} />
           </TerminalPanel>
 
-          <TerminalPanel title="App" cmd="tail -n all APP_CHANGELOG">
+          <TerminalPanel title="Fatescope App" cmd="tail -n all APP_CHANGELOG">
             <LogList items={app} />
+          </TerminalPanel>
+
+          <TerminalPanel title="KAIROS" cmd="tail -n all KAIROS_CHANGELOG">
+            <LogList items={kairos} />
           </TerminalPanel>
         </div>
       </div>

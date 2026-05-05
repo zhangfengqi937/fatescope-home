@@ -139,7 +139,7 @@
     {
       "date": "2025-09-05",
       "version": "site rev. #12",
-      "title": "Host Homepage & App landing page Online",
+      "title": "Host Homepage & App Landing Page Online",
       "items": [
         "Refined change log details and formatting",
         "Fixed bilingual (ZH / EN) changelog page bug",
@@ -149,7 +149,28 @@
         "Revised App section to 'Coming Soon'",
         "Added Milky Way photo to Gallery",
         "Created new repository for FateScope 'Coming Soon' landing page",
-        "Host Both pages online via Vercel"
+        "Hosted both pages online via Vercel"
+      ]
+    },
+    {
+      "date": "2025-09-12",
+      "version": "site rev. #13",
+      "title": "Personal Touch & Content",
+      "items": [
+        "Added Spotify embed — Ryuichi Sakamoto «Merry Christmas, Mr. Lawrence»",
+        "Added opening quote: 'It's important to live your life the way you want to.'",
+        "Added personal wish section",
+        "Removed LangGate from layout (language prompt no longer shown on entry)"
+      ]
+    },
+    {
+      "date": "2025-12-06",
+      "version": "site rev. #14",
+      "title": "Security & Deployment Fixes",
+      "items": [
+        "Upgraded Next.js to 16.0.7 (security patch)",
+        "Added .npmrc to force legacy peer deps on Vercel",
+        "Fixed JSX type definition for React 19 compatibility"
       ]
     }
   ],
@@ -181,10 +202,10 @@
       "items": [
         "Created production-ready Dockerfile using multi-stage builds to minimize image size and improve security.",
         "Configured .dockerignore to reduce build context and prevent sensitive files from being shipped.",
-        "Deployed Docker image to Amazon ECR (Elastic Container Registry), enabling centralized versioned storage.",
+        "Deployed Docker image to Amazon ECR, enabling centralized versioned storage.",
         "Launched EC2 instance (Amazon Linux 2) as a staging environment; installed Docker and configured persistent volumes.",
-        "Bound EC2 instance role with minimal ECR pull permissions (IAM role vs. static keys) to enforce security best practices.",
-        "Added basic systemd service for container auto-restart, ensuring resilience in case of failure.",
+        "Bound EC2 instance role with minimal ECR pull permissions (IAM role vs. static keys).",
+        "Added basic systemd service for container auto-restart.",
         "Documented deployment runbook for manual redeploys prior to automation stage."
       ]
     },
@@ -194,12 +215,11 @@
       "title": "Terraform IaC Foundations",
       "items": [
         "Implemented Infrastructure as Code using Terraform to provision EC2, VPC networking, and IAM roles.",
-        "Created Terraform modules for security groups (restricted ports: SSH, HTTP/HTTPS), improving infra hygiene.",
-        "Configured Terraform state management (local, with roadmap to S3 backend + DynamoDB lock for HA).",
-        "Added IAM module: created role for EC2 with scoped-down policies (AmazonEC2ContainerRegistryReadOnly, CloudWatchAgentServerPolicy).",
-        "Separated developer IAM users from service roles, following principle of least privilege.",
+        "Created Terraform modules for security groups (restricted ports: SSH, HTTP/HTTPS).",
+        "Configured Terraform state management (local, with roadmap to S3 backend + DynamoDB lock).",
+        "Added IAM module with scoped-down policies (ECRReadOnly, CloudWatchAgentServerPolicy).",
         "Introduced variables.tf and outputs.tf for reusability and modular deployments.",
-        "Added tagging convention for AWS resources (project, owner, environment), aiding cost tracking and compliance."
+        "Added tagging convention for AWS resources (project, owner, environment)."
       ]
     },
     {
@@ -210,10 +230,8 @@
         "Set up GitHub Actions workflow: on commit → build Docker image → push to ECR → trigger EC2 deployment.",
         "Used self-hosted runner on EC2 for zero-downtime rollout and rollback testing.",
         "Introduced environment-specific branches (dev, staging, prod) with deployment matrix.",
-        "Configured GitHub Secrets for AWS credentials; replaced static keys with OIDC federated identity (GitHub → AWS) for short-lived tokens.",
-        "IAM hardening: created GitHub role with ECR push + EC2 deploy permissions only; separated build/deploy accounts.",
-        "Integrated smoke tests post-deployment to validate container health and API readiness.",
-        "Documented CI/CD flow including branching strategy, release tagging, rollback steps, and IAM trust policies."
+        "Replaced static keys with OIDC federated identity (GitHub → AWS) for short-lived tokens.",
+        "Integrated smoke tests post-deployment to validate container health and API readiness."
       ]
     },
     {
@@ -242,14 +260,11 @@
       "title": "Cloud Hardening, IAM & Monitoring",
       "items": [
         "Optimized CI/CD pipeline with dependency caching, reducing build time by ~30%.",
-        "Enabled AWS CloudWatch logging for EC2 and container logs; added custom log groups for app/API events.",
-        "Configured CloudWatch Alarms to detect high CPU, memory, or disk usage; wired alerts to email notification.",
-        "IAM hardening: rotated EC2 instance profiles, added CloudWatchAgentServerPolicy, restricted ECR roles to pull-only in staging.",
-        "Separated IAM users for dev/test/prod; enforced MFA for console access.",
-        "Restricted security groups: closed unused ports, enforced HTTPS-only public endpoints.",
-        "Added `/healthz` endpoint for health checks and tied to CloudWatch for availability tracking.",
-        "Implemented request throttling middleware in app layer to mitigate brute force or DDoS-like traffic.",
-        "Reviewed AWS Cost Explorer reports, set budget alarms; IAM billing role created for read-only finance team access."
+        "Enabled AWS CloudWatch logging for EC2 and container logs.",
+        "Configured CloudWatch Alarms for CPU, memory, and disk usage; wired alerts to email.",
+        "IAM hardening: rotated EC2 instance profiles, restricted ECR roles to pull-only in staging.",
+        "Added /healthz endpoint for health checks tied to CloudWatch.",
+        "Implemented request throttling middleware to mitigate brute force traffic."
       ]
     },
     {
@@ -260,6 +275,516 @@
         "Implemented Chinese core algorithm entry points; aligned output schema for downstream UI.",
         "Added divination templates and story templates; expanded requirements.txt with pinned versions.",
         "Validated end-to-end: app now handles a basic query via API and returns structured, explainable results."
+      ]
+    },
+    {
+      "date": "2026-03-30",
+      "version": "v1.0",
+      "title": "Product Launch — Zi Wei Dou Shu Entertainment Engine",
+      "items": [
+        "Shipped full Next.js App Router frontend with TypeScript + Tailwind.",
+        "Built Character Profile: 6 RPG-style stats (STR/INT/CHA/VIT/DEX/LUCK), 35 classical pattern detections, 30 achievements, 10 archetype classes.",
+        "Implemented Compatibility module: 10-dimension scoring with balanced Zi Wei / BaZi weighting.",
+        "Launched /intel system (user intelligence input), /scenario, /polymarket, /journal commands.",
+        "Integrated Grok optimization, backtesting audit, 24 unit tests.",
+        "Interactive life trend map with current-age focus and decadal insights."
+      ]
+    },
+    {
+      "date": "2026-03-30",
+      "version": "v1.1",
+      "title": "Algorithm Calibration + Star Council + UI Overhaul",
+      "items": [
+        "Added Star Council (议事厅): 14 playable star personas with distinct voices, roundtable discussion flow, and multi-round follow-up chat.",
+        "Calibrated core algorithm: 10 fixes covering confidence, sigmoid, Kelly cap, veto logic, stop-loss, and probability k-value.",
+        "Upgraded radar views and character stat calculations.",
+        "Rebuilt overall UI with improved section hierarchy and visual consistency.",
+        "Added /scan grok and smart money flow summary."
+      ]
+    },
+    {
+      "date": "2026-04-09",
+      "version": "v1.1.1",
+      "title": "Character Stats & Radar Tuning",
+      "items": [
+        "Tuned character stat calculations for accuracy and balance.",
+        "Upgraded radar view behavior and profile interpretation logic."
+      ]
+    },
+    {
+      "date": "2026-04-10",
+      "version": "v1.1.2 – v1.1.3",
+      "title": "Dynamic Insight Cards & Pro Guide",
+      "items": [
+        "Expanded character profile with dynamic insight cards for romance, career, wealth, and social lenses.",
+        "Built the Pro character guide with membership gating and paywall infrastructure.",
+        "Added history-loading UX for development and testing."
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "version": "v1.1.4",
+      "title": "Profile Simplification & Copy Polish",
+      "items": [
+        "Removed redundant explanation layers from the character profile flow.",
+        "Streamlined main path to: character card → radar → achievements → Pro guide.",
+        "Rewrote Pro guide copy into clearer, more user-friendly language."
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "version": "v1.1.5",
+      "title": "Interactive Life Trend",
+      "items": [
+        "Made the life trend section fully interactive with age-aware browsing and click-to-focus behavior.",
+        "Added cleaner profile pacing and dedicated decadal insight copy."
+      ]
+    },
+    {
+      "date": "2026-04-15",
+      "version": "v1.1.6",
+      "title": "Profile Flow Unification & Share Card",
+      "items": [
+        "Simplified main profile into four core sections: Character Profile, Chart Analysis, Life Trend, Share & Export.",
+        "Upgraded life trend into an interactive time map with clickable decadal selection.",
+        "Improved life trend scoring with birthday sampling and stronger decadal factors.",
+        "Fixed share card preview rendering by moving modal into a portal; redesigned character share card layout."
+      ]
+    },
+    {
+      "date": "2026-04-20",
+      "version": "v1.2.0",
+      "title": "Prediction V2 Fortune Engine",
+      "items": [
+        "Shipped Prediction V2 scoring engine for yearly, monthly, and daily fortune reads.",
+        "Added structure classification (axial/conflicted/polarized/balanced/none) calibrated against a 72-sample audit set.",
+        "Added pattern-layer corrections for Lu-Ji crossfire, Lu broken by opposition, Huo-Tan/Ling-Tan formats.",
+        "Added decadal category mutagen influence, period-scaled self-transform handling, and palace-specific bonuses.",
+        "Added V2 regression, exploration, smoke audit, and full audit scripts for repeatable validation."
+      ]
+    },
+    {
+      "date": "2026-04-29",
+      "version": "v1.3.0",
+      "title": "Visual Identity Overhaul — Starfield & Ritual UI",
+      "items": [
+        "Added full-screen animated canvas starfield with twinkling stars and shooting stars across all pages.",
+        "Replaced hero emoji with an animated SVG Astrolabe featuring spinning rings, light rays, and breathing glow.",
+        "Introduced RitualCard: purple glow halo + corner accent brackets, replacing GlassCard in all main form contexts.",
+        "Redesigned Council Hall pre-setup with two visual mode-selector cards (Single Star / Roundtable).",
+        "Upgraded agent tab pills with active purple glow and replaced header logo with inline SVG icon.",
+        "Added spin/spinReverse keyframe utilities with prefers-reduced-motion support."
+      ]
+    },
+    {
+      "date": "2026-05-01",
+      "version": "v1.4.0",
+      "title": "Synastry Twin-Orbits & Yearly Wheel",
+      "items": [
+        "Added twin-orbits SVG hero to Synastry: two animated orbs with spinning satellite rings and gradient bridge.",
+        "Rebuilt DualBirthForm into a mirrored three-column layout with purple/pink per-person color accenting.",
+        "Added YearlyWheel: SVG 12-palace flow-year ring with score-driven brightness dots, slow-rotating tick ring, and pulsing pointer needle.",
+        "Upgraded Prediction period tabs to tall card-style buttons with glyphic icons and sky-blue active state.",
+        "Changed Synastry CTA to purple-to-pink gradient; Prediction CTA to ice-blue-to-purple gradient."
+      ]
+    },
+    {
+      "date": "2026-05-04",
+      "version": "v1.5.0",
+      "title": "Frost Design System & Dark-Mode Lock",
+      "items": [
+        "Introduced Frost token set: CSS variables (--frost-ice, --frost-moon, --frost-line, --frost-glow, --serif) and utility classes.",
+        "Loaded Cormorant Garamond via next/font/google for all frost-serif text.",
+        "Rebuilt CharacterCard with twin counter-rotating sigil rings, aurora background, and pulsing halo.",
+        "Added three-tier rarity visuals to AchievementBadges (legendary gold glow / rare frost-ice / common neutral).",
+        "Unified all section card headers to frost-eyebrow + frost-serif pattern across all major components.",
+        "Added hero-title-L entrance animation and spotlight halo across all four pages.",
+        "Removed light mode entirely; deleted ThemeProvider and theme toggle button.",
+        "Renamed brand spelling from FateScope to Fatescope across all source files."
+      ]
+    },
+    {
+      "date": "2026-05-04",
+      "version": "v1.5.1",
+      "title": "Interactive Starfield with Constellation Lines",
+      "items": [
+        "Rewrote Starfield to a dual-canvas architecture: static bg canvas + interactive fx canvas.",
+        "Added mouse-following MST constellation lines with dashed gradient edges and 4-spike lit star nodes.",
+        "Added cursor pink-purple halo and stardust particle trail on mouse move.",
+        "Changed intensity prop from a number to a subtle/normal/rich string union."
+      ]
+    },
+    {
+      "date": "2026-05-04",
+      "version": "v1.6.0",
+      "title": "Homepage Overhaul — Live Ganzhi Bar & Form Polish",
+      "items": [
+        "Added StarNarrative scroll-driven intro: four lines fade in on scroll with a smooth-scroll CTA.",
+        "Added TodayBar showing live year ganzhi, day ganzhi, current shichen, and moon phase emoji; updates every 60 seconds.",
+        "Upgraded Astrolabe with currentShichen pointer highlighting the active time period; enlarged to 280px with mouse parallax.",
+        "Added hero title gradient (ice-blue → violet → pink) on key words.",
+        "Wrapped BirthForm in a purple radial light pool with slide-up entrance animation.",
+        "Added SideRails (lg+ only): left rail shows vertical serif text '紫微斗数 · 观星阁', right rail shows a tick-mark line.",
+        "Upgraded BirthForm: gender as sun/moon card buttons, CTA gradient + pulse, calendar toggle perspective flip.",
+        "Renamed nav labels: 角色卡→命盘, 议事厅→星谕, 历史→星迹 (en: Chart, Oracle, Chronicle)."
+      ]
+    }
+  ],
+  "kairos": [
+    {
+      "date": "2026-03-24",
+      "version": "v0.1",
+      "title": "Core Engine with William Agent",
+      "items": [
+        "First publish: KAIROS core engine with William technical analysis agent.",
+        "William: multi-timeframe pattern recognition, ATR stop-loss, EMA/SMA/BB indicators.",
+        "Discord Bot integration for manual command triggers."
+      ]
+    },
+    {
+      "date": "2026-03-26",
+      "version": "v2.1",
+      "title": "Multi-Agent System + Risk Manager + Alpaca Paper Trading",
+      "items": [
+        "Added agents: Powell (macro), Martha (fundamentals), Gwen (final arbiter).",
+        "Added Nathan Intel agent: Grok API sentiment, NewsAPI headlines, Polymarket odds.",
+        "Implemented 8 algorithmic upgrades (A1–A8): continuous gradient scoring, 12-check conflict matrix, Z-score volume anomaly, real FRED data, continuous analyst rating, Sigmoid VIX weights, ATR-relative thresholds, structured Grok JSON parsing.",
+        "Added Risk Manager: Kelly sizing, ATR stop-loss, correlation matrix, circuit breakers.",
+        "Added Alpaca paper trading: bracket orders (entry + SL + TP), $100K virtual account.",
+        "Config-driven LangGraph factory with conditional conflict resolution loop.",
+        "Added RRG sector rotation (13 ETFs), K-line chart tool, signal history logger.",
+        "131 offline pytest tests covering all signal extraction and utility logic."
+      ]
+    },
+    {
+      "date": "2026-03-30",
+      "version": "v1.0",
+      "title": "Production Release — Intel System & Grok Optimization",
+      "items": [
+        "Shipped /intel (user intelligence input with 25% Nathan weight), /scenario, /polymarket, /journal.",
+        "Optimized Nathan: skip Grok in daily mode (yfinance PCR/IV), William bible 16K→3.5K tokens.",
+        "Fixed: global CB MultiIndex, Grok fake data detection, Martha NoneType, backtest cutoff/slippage/Sharpe/ATR.",
+        "24 unit tests passing."
+      ]
+    },
+    {
+      "date": "2026-03-30",
+      "version": "v1.1",
+      "title": "Critical Algorithm Fixes & Performance",
+      "items": [
+        "Fixed: William trade_params zero, risk direction bug, Gwen batch parse, Martha guards.",
+        "Algorithm: 10 fixes (confidence, sigmoid, Kelly cap, veto, stop-loss, probability k-value).",
+        "Performance: Gwen max_tokens=4096, daily briefing reduced from 6 to 4 assets.",
+        "Added /scan grok and smart money flow summary."
+      ]
+    },
+    {
+      "date": "2026-03-31",
+      "version": "v1.2",
+      "title": "/brief Command, Market Signals & Real X Data via Grok",
+      "items": [
+        "Added /brief: concise daily briefing, 2 sentences per asset.",
+        "Added Market Signals: VIX term structure, RRG risk tolerance, 0DTE volume.",
+        "Integrated Grok real X tweets via xai-sdk grok-4 x_search (replaces hallucinated data).",
+        "Optimized KOL watchlist 30+→10 accounts; Grok scans 7→3 (~60% faster).",
+        "Fixed: direction from Gwen verdict score, batch parser ticker-aware fallback, === marker stripping.",
+        "All agent temperatures tuned to 0.05 (near-deterministic)."
+      ]
+    },
+    {
+      "date": "2026-04-01",
+      "version": "v1.3",
+      "title": "Vol Structure Module & Algorithm Audit",
+      "items": [
+        "Added Powell vol structure: VVIX/VIX3M/CBOE SKEW/COR1M/SPY-TLT → FEAR/CAUTIOUS/NEUTRAL/COMPLACENT.",
+        "Gwen vol weight layer: Vol FEAR→Powell×1.10, COR1M>40%→Martha×0.85.",
+        "Fixed: Powell score purified — vol structure only affects Gwen weights, not signal_score.",
+        "Fixed: William LLM ticker override (NQ/ES contamination root cause).",
+        "Fixed 7 additional algorithm and display bugs.",
+        "Gwen RAG split into decision_rules + verdict_patterns."
+      ]
+    },
+    {
+      "date": "2026-04-02",
+      "version": "v1.4",
+      "title": "Institutional Brief Format & VIX Decomposition",
+      "items": [
+        "Upgraded to institutional brief format with cleaner section structure.",
+        "Martha macro-only mode: 4 ETFs only (SPY/QQQ/IWM/XLF), skips individual stock data pull.",
+        "Added VIX decomposition layer.",
+        "Added geopolitical risk signals in Powell macro report."
+      ]
+    },
+    {
+      "date": "2026-04-06",
+      "version": "v1.5 – v1.5.3",
+      "title": "Sentinel 3-Layer Monitor + ML Pipeline",
+      "items": [
+        "Sentinel 3-tier architecture: Tier 1 (5-min scan) → Tier 2 (DDG reason search) → Tier 3 (/powell_case manual).",
+        "Intraday Monitor rewrite; per-asset Nathan architecture with shared intel data.",
+        "ML Pipeline: signal_history v3, label backfill, ML dataset schema v2, weight recording.",
+        "Walk-forward validation: 30-day window, 7-day step, Sharpe + max drawdown reporting.",
+        "Backtest V2: 6-week sprint — replay engine, synthetic data loader, per-agent attribution, drift monitor.",
+        "Scanner v3.0: 3-phase shared architecture (5 tickers: 25→9 LLM calls, 64% savings)."
+      ]
+    },
+    {
+      "date": "2026-04-10",
+      "version": "v1.6.2",
+      "title": "LLM Cost Tracking & Report Quality Fixes",
+      "items": [
+        "Added LLM cost tracking per agent per run.",
+        "Fixed 6 report quality issues: Oil stop contradiction, Polymarket filtering, CPI calendar, GEX fix.",
+        "Added file logging and briefing archival to data/briefings/."
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "version": "v1.6.3",
+      "title": "Data Source Reliability & Observability Overhaul",
+      "items": [
+        "William: automatic futures→ETF fallback (NQ→QQQ / ES→SPY / GC→GLD / CL→USO / BTC→IBIT).",
+        "sector_flow: batch download → per-ticker via Alpaca primary.",
+        "Added WARNING/DEBUG logs to 70 previously silent except blocks across 17 files.",
+        "Wired up API error rate monitoring across all tool files."
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "version": "v1.6.4",
+      "title": "Volume Column Preservation & Sector Flow Simplification",
+      "items": [
+        "Unified _download_safe / Alpaca / market cache to support OHLCV (backward-compat with OHLC).",
+        "sector_flow: removed separate yfinance Volume workaround.",
+        "rag_updater RRG retro: switched from yf.download to _download_safe."
+      ]
+    },
+    {
+      "date": "2026-04-14",
+      "version": "v1.6.5 – v1.6.6",
+      "title": "Stock Briefing Mode & Report Quality",
+      "items": [
+        "Added /stocks command: 20-stock Route A pipeline (Martha+Powell shared → William per-stock → Gwen batch).",
+        "Fixed sector_flow: open→close changed to close-to-close (fixes overnight gap blindness).",
+        "Fixed breakout entry_price MultiIndex extraction; added kelly_fraction, position_pct, direction to signal_history.",
+        "Added blogger intel section with price map and per-horizon text snippets.",
+        "Added FRED degradation warning in briefing when core liquidity data is missing."
+      ]
+    },
+    {
+      "date": "2026-04-15",
+      "version": "v1.6.7",
+      "title": "Martha v3.0 Fundamentals & FRED Persistent History",
+      "items": [
+        "Martha v3.0: added DCF valuation, financial quality score, 13F fund classification, PEG fallback (coverage 10%→86%).",
+        "Martha: 6-dimension composite scoring (insider 25% + rating 20% + revision 17% + institutional 15% + quality 15% + volume 8%).",
+        "William: Trading Bible V4.0 → 14 chapters (added Fibonacci, Gap, AVWAP, RS, divergence).",
+        "Powell: added Gamma-Vanna interaction matrix + VIX bottoming vanna fade playbook in RAG.",
+        "FRED: persistent history storage (data/fred_history/), TTL by frequency, API calls reduced ~68→~10/day."
+      ]
+    },
+    {
+      "date": "2026-04-16",
+      "version": "v1.6.8",
+      "title": "Nathan Weight Restructure + Intel LLM v2.0 + 3-Tier Stops",
+      "items": [
+        "Intel LLM v2.0: gpt-4o-mini structured output parser with regex fallback (25%→100% extraction rate).",
+        "Nathan: 7-dimension weights — intel 50% / news 12% / Grok 12% / Polymarket 10% / LLM 6% / PCR 5% / contrarian 5%.",
+        "News: Finnhub + NewsAPI merge (60/40 interleave, not fallback).",
+        "William: 3-tier stop/target (short 1.0×ATR / swing 1.5×ATR / position weekly ATR).",
+        "ML dataset: added william_stop_short, william_stop_position, trade_params_version fields."
+      ]
+    },
+    {
+      "date": "2026-04-17",
+      "version": "v1.6.9",
+      "title": "Gwen Verdict Consistency & TV Indicators",
+      "items": [
+        "Gwen: fixed position_pct<1% → verdict downgrade to 观望; nullified trade params on NEUTRAL + directional William conflict.",
+        "Gwen: vol_regime_locks prevents trend boost from undoing VRP/VIX confidence downgrade.",
+        "Added TV indicators: SMA channel CH1/CH2, RSI6, BB200, 4 signal rules with 3-year daily fetch.",
+        "Added continuous_score structured field, classify_regime() v1.0, forward_validation.jsonl.",
+        "Removed Oil from DAILY_ASSETS (5→4 core assets)."
+      ]
+    },
+    {
+      "date": "2026-04-22",
+      "version": "v1.7.0",
+      "title": "Market Sentiment System + AI Event Discovery + Buy/Sell Signals",
+      "items": [
+        "Sentiment: CNN Fear & Greed (daily) + NAAIM (scraped) + SPY/QQQ 14D ATM IV; all persisted to signal_history and ML dataset.",
+        "Events: Grok x_search Scan 4 replaces static calendar; priority chain Grok cache → static calendar → DDG.",
+        "Signals: 7-indicator buy/sell confluence (VRP/RSI/F&G/NAAIM/IV/VIX-RV/MA50), 3 alert levels.",
+        "Stock Lite mode: brief_mode=True skips Nathan (23 vs 43 LLM calls).",
+        "UI overhaul: all sections code-block aligned, Chinese table headers, pagination removed."
+      ]
+    },
+    {
+      "date": "2026-04-22",
+      "version": "v1.7.1",
+      "title": "FOMO/Panic Guardrails & Stop Direction Fix",
+      "items": [
+        "FOMO warning: 7 indicators (RSI/VRP/F&G/NAAIM/IV/streak/Kelly), 3+ triggers top-of-briefing alert.",
+        "Panic reminder: symmetric buy-side guardrail, 3+ triggers bottom-fishing prompt.",
+        "Mid-layer buy/sell signals suppressed when top-level FOMO/panic active.",
+        "Fixed Gwen-William direction conflict: bullish watch + William SHORT now sets stop to N/A.",
+        "PCR persisted to signal_history sentiment.pcr with 0DTE to Nathan fallback."
+      ]
+    },
+    {
+      "date": "2026-04-22",
+      "version": "v1.7.2",
+      "title": "Harness Engineering — Silent Failure Detection & Auto-Degradation",
+      "items": [
+        "with_timeout writes _harness meta (TIMEOUT/EMPTY_OUTPUT) to raw_data.",
+        "Gwen _check_harness_degraded() reads structured meta per agent per ticker.",
+        "DEGRADED agents forced to NEUTRAL (score=0) before verdict computation.",
+        "Phase 0 data freshness pre-flight check before daily briefing.",
+        "safe_llm_invoke: isinstance-based retry with exponential backoff + jitter, Gemini fallback."
+      ]
+    },
+    {
+      "date": "2026-04-22",
+      "version": "v1.7.3",
+      "title": "External Advisors + Agent Roundtable + Analyst Hour",
+      "items": [
+        "External advisors: teacher (silent jsonl) + @A blogger (Discord), powered by Claude Sonnet.",
+        "Agent Roundtable: 6-voice capsules (Powell/William/Nathan/Martha/Gwen/@A) with fact-check against ground truth.",
+        "Roundtable: convergence/divergence/blind_spots + analyst_takeaway; ~.069/call, date-cached.",
+        "Analyst Hour: daily 17:15 ET orchestrator separating teacher review from Discord output.",
+        "Cron realignment: Grok 08:40, Breakout 16:05, Retro 17:00, Analyst Hour 17:15.",
+        "signal_history v3.1: william_trade param (entry/stop×3/target/direction/ATR persisted)."
+      ]
+    },
+    {
+      "date": "2026-04-23",
+      "version": "v1.7.4",
+      "title": "Weekly Meta-Review + Drift Alert + 6 Data Persistence Gaps",
+      "items": [
+        "Weekly Meta-Review: Sunday 18:00 ET Sonnet aggregator + /weekly slash; fact-check digestion rate, coherence trend.",
+        "Drift Alert: 3-day streak + z>2.5 + 48h throttle, fires separate Discord message at 17:00.",
+        "Filled 6 data persistence gaps: gap+overnight markets, Grok scan history, per-agent Gwen score breakdown, 0DTE full distribution, scheduled events reactions, teacher win-rate backfill.",
+        "Bug fixes: data_health thresholds loosened (daily-cadence sources 6h→36h), grok_tools events cache key hourly→daily.",
+        "Layout cleanup: scripts/ directory, data/backtest/, data/knowledge/trading_bible.md, data/README.md."
+      ]
+    },
+    {
+      "date": "2026-04-23",
+      "version": "v1.7.5",
+      "title": "Megapro Listener + Briefing Sanity Check + Earnings Pipeline Fix",
+      "items": [
+        "Megapro listener: regex parse action/ticker/bias from Discord webhook; 45-day backfill (41 records).",
+        "Megapro added as 7th voice in Agent Roundtable with alignment vs KAIROS direction check.",
+        "Briefing sanity check: Sonnet world-knowledge independent cross-check; first run caught 3 real bugs zero false-positives.",
+        "Earnings pipeline: triple fix — Finnhub no longer short-circuits yfinance; unified schema; date-level comparison.",
+        "CORE_TICKERS expanded 15→27 (+INTC/CRM/ORCL/AVGO/BAC/MS/LLY/JNJ/CVX/HD/KO/CAT).",
+        "ML dataset v4→v5: added sector_flow_full/offensive/defensive (87 columns total)."
+      ]
+    },
+    {
+      "date": "2026-04-26",
+      "version": "v1.7.6",
+      "title": "Structure & Momentum (TV 4-Batch) + Roundtable Audit + Prompt Defense",
+      "items": [
+        "Added 11 new TV indicators: CH slope, RSI zone, BB squeeze, divergence, W/M pattern, candlestick, VIX-adaptive σ, multi-TF ⭐, cross-asset 🌐, volume surge; Sell 1/2/3 symmetric to Buy 1/2/3.",
+        "4H data expanded from 45d→730d; 4H now computes BB200+CH2.",
+        "5-agent unified LLM extraction block: William 4 rows + cross-asset meta (gpt-4o-mini, ~$0.001/day, date-cached).",
+        "Roundtable Audit: Python rules + gpt-4o-mini independent reviewer; renders as 🛡 section.",
+        "Prompt defense: William 9-case conflict truth table; @A review 3 rules; price anchor injection.",
+        "8 bug fixes; RAG retrieval logger Phase 1 added. 935/935 tests pass."
+      ]
+    },
+    {
+      "date": "2026-04-27",
+      "version": "v1.7.7",
+      "title": "Harness Engineering + RAG Deep Optimization + Grok Cost Reduction",
+      "items": [
+        "Harness: unified event log (18 types, 4 groups: runtime/data/algo-guard/retro); checkpoint.py crash-resume; daily_budget circuit breaker.",
+        "RAG Phase 1: similarity_search_with_score logs rag_retrieval_history.jsonl per query.",
+        "RAG Phase 2: rag_coverage.py + /rag_coverage slash (distance distribution, touch rate, hot queries).",
+        "PATTERN_QUERY_MAP 11→22 patterns; _extract_pattern_from_observation 7→22 (Chinese markers added).",
+        "Trading Bible expanded: 472→604 lines, ch.15 adds wedge execution, FVG ICT, head-shoulders, HL-LH structure rules.",
+        "Grok cost optimization: max_tokens cuts + KOL discovery Mon/Wed/Fri only (~$6/month saved).",
+        "935/935 tests pass."
+      ]
+    },
+    {
+      "date": "2026-04-28",
+      "version": "v1.7.8",
+      "title": "William Exemption Refactor + Sector Risk Layer + Roundtable Self-Improvement",
+      "items": [
+        "William: exemption changed from forced BULLISH_SETUP override to resonance +20 reference signal.",
+        "Martha: added defensive rotation marker (XLP/XLU/XLV vs XLK); Gwen applies conservative bullish score discount on rotation.",
+        "Nathan: added SOXX/QQQ/GLD sector PCR + OI PCR + Max Pain; flags AI/tech narrative concentration risk.",
+        "Daily briefing v2: added credit spread, Crypto Fear & Greed, sector PCR, Max Pain, deterministic RRR.",
+        "Roundtable: added yesterday accuracy, 7-day agent win rates, system health score, improvement_suggestions.",
+        "ML dataset: extended schema with sector options flow, HYG/IEI credit spread, crypto sentiment features."
+      ]
+    },
+    {
+      "date": "2026-04-29",
+      "version": "v1.7.9",
+      "title": "Sector Rotation Alert + Harness Phase 2 + ML Readiness Audit",
+      "items": [
+        "Sector Rotation Alert: 16:10 ET cron + /rotation_alert slash; RRG quadrant shift + 1d/5d sector flow → ALERT/WATCH/QUIET.",
+        "Harness Phase 2: 08:35 preflight + 17:10 artifact audit + cron job ledger + recovery playbook + /harness slash.",
+        "ML Readiness Audit: embedded in 17:00 retro; audits label fill rate, v6 feature completeness, direction balance.",
+        "Nathan fix: pcr NameError that caused all 4 per-asset Nathan calls to fail silently.",
+        "Polymarket: stale cache fallback (24h), 2-attempt retry, relevance scoring, deadline filter.",
+        "936/936 tests pass."
+      ]
+    },
+    {
+      "date": "2026-05-02",
+      "version": "v1.7.10",
+      "title": "Data Quality Fixes + Grok v3.2 + Harness Completeness",
+      "items": [
+        "FRED: non-rate series staleness thresholds; fallback date/staleness baked into report_block.",
+        "Nathan: RAG query split into two focused ≤80-char strings (improves retrieval distance).",
+        "Grok v3.2: removed Scan2 (options flow) and Scan3 (contrarian); added premarket breaking news x_search. Daily cost $0.28→$0.09 (68% reduction).",
+        "Harness: preflight disk space check + yfinance staleness; per-asset artifact audit reports exact missing tickers.",
+        "issue_backlog: auto-sync at 17:00 retro; _should_auto_close() for observing (7d quiet) and data/rag categories.",
+        "950/950 tests pass."
+      ]
+    },
+    {
+      "date": "2026-05-03",
+      "version": "v1.7.11",
+      "title": "ML Dataset Fix + Harness Loop + William Knowledge + Blogger A Distillation",
+      "items": [
+        "ML fix: william_ok checks william_entry_raw first; trainable set 64→~98 rows.",
+        "Harness loop: consecutive directional miss streak ≥3 fires CONSECUTIVE_MISS_WARN; Discord escalation alert for issues unresolved 3+ days.",
+        "William Trading Bible ch.17: Bull Market Hold Rule (hold long ≥N weeks after N-week decline; exit on 21EMA break or Stage 3/4).",
+        "Blogger A distillation: permanent archive data/blogger_a/posts.jsonl + .chroma_blogger_a; daily ingest + distill via gpt-4o-mini.",
+        "Grok v3.2: restored fetch_market_events() to pre-warm 09:00 news_tools cache.",
+        "950/950 tests pass."
+      ]
+    },
+    {
+      "date": "2026-05-04",
+      "version": "v1.7.12",
+      "title": "Algorithm Fix #1 Complete + Data Quality Staleness + Grok v3.3",
+      "items": [
+        "Algorithm fix #1 (Issue #1 closed): william_tech syncs trade_params direction with LLM 系统最终趋势判定; agent_outputs/ml_dataset/Roundtable GROUND TRUTH now all consistent.",
+        "Removed W3 resonance direction override; Gwen LLM text direction takes priority over trade_params.",
+        "Grok v3.3: removed Scan1 (KOL) — chronically silent; xAI calls 3→2/day (33% cost reduction).",
+        "Data quality: FRED monthly TTL 7d→3d; double-threshold high/medium staleness; stale fallback events for sentiment/macro/polymarket.",
+        "Harness: check_missed_jobs() scans from last recorded date; Weekly Meta-Review adds 4 new dimensions.",
+        "951/951 tests pass."
+      ]
+    },
+    {
+      "date": "2026-05-05",
+      "version": "v1.7.13",
+      "title": "Premarket Data Quality + Calendar Consistency + Weinstein Fixes",
+      "items": [
+        "Nathan today-tracking now only includes same-day events; news/TBD items split from scheduled macro and earnings.",
+        "FOMO RSI now carries asset attribution; BTC RSI=98 no longer reported as market-level RSI.",
+        "yfinance Weinstein 30WMA handles MultiIndex/Series correctly; NQ/ES no longer misreport weekly data as insufficient.",
+        "DX-Y.NYB skips Alpaca and routes through yfinance/index data path.",
+        "FRED run cache + release-calendar staleness grace; Nathan shared options positioning cache.",
+        "Grok weak-source events downgraded; GEX empty option chain returns explicit info state.",
+        "958/958 tests pass."
       ]
     }
   ]

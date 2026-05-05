@@ -9,7 +9,7 @@ import { Tag } from "@/components/Tag";
 import { Badge } from "@/components/Badge";
 import TerminalChangelogDigest from "@/components/TerminalChangelogDigest";
 
-import { NotebookPen, Camera, AppWindow, Globe, Mail } from "lucide-react";
+import { NotebookPen, Camera, Globe, Mail } from "lucide-react";
 import InstagramBrandIcon from "@/components/InstagramBrandIcon";
 import SpotifyEmbed from '@/components/SpotifyEmbed';
 
@@ -73,23 +73,14 @@ export default function HomeEn() {
               <li>Cloud Architecture — Stable, secure, and evolving with AWS, Terraform, containerization, and CI/CD</li>
             </ul>
 
-            {/* Current Feature */}
+            {/* Current Features */}
             <h6 className="mt-4 text-[15px] font-medium text-slate-800">Highlight Features</h6>
             <ul className="text-base text-slate-700 list-disc ml-5 space-y-2 leading-7">
-            </ul>
-
-            {/* Coming Soon             <h6 className="text-[15px] font-medium text-slate-800 mb-2 flex items-center gap-2">
-              <span className="text-amber-500 text-lg">⏳</span>
-              Coming Soon
-            </h6>*/}
-
-            <ul className="text-base text-slate-700 list-disc ml-5 space-y-2 leading-7">
-              <li>Divination — Timely readings for specific questions, offering clarity and reassurance in key decisions</li>
-              <li>Soul Stories — Narratives of past and present lives, and the unseen connections that shape your path</li>
-              <li>Personal Forecast — Customized trends and directions to help you navigate each stage of life</li>
-              <li>Life Blueprint — Guidance on your mission, overall destiny, and the lessons written into your script</li>
-              <li>Annual / Monthly / Daily Flow — Insights into turning points and cycles of change</li>
-              <li>One-on-One Deep Reading — Planned premium service for personalized, in-depth guidance</li>
+              <li>Character Profile — RPG-style stats (STR/INT/CHA/VIT/DEX/LUCK), 35 classical pattern detections, 30 achievements, and 10 archetype classes</li>
+              <li>Compatibility — 10-dimension scoring with BaZi × Zi Wei dual-engine, soul-palace mirroring, and dual monthly timeline</li>
+              <li>Fortune Prediction — Yearly / monthly / daily reads via a 17-layer V2 engine with structured fortune cards and Yearly Wheel SVG</li>
+              <li>Star Council — 14 star personas in a roundtable discussion with RAG-backed knowledge, voting, and consensus output</li>
+              <li>Social Cards — Shareable portrait cards (character / yearly / compatibility) with PNG export</li>
             </ul>
 
             <div className="pt-2 space-y-2">
@@ -656,6 +647,20 @@ export default function HomeEn() {
                     desc:
                       "Launched my site, released the Alpha of the hybrid astrology engine, and opened a healing writing & photo channel.",
                     kind: "healing",
+                  },
+                  {
+                    year: "2026",
+                    title: "Fatescope App v1.0 — Full Product Launch",
+                    desc:
+                      "Shipped the full Fatescope app: Character Profile (RPG stats + 35 patterns), Compatibility engine, Fortune Prediction V2, Star Council roundtable, social sharing cards, and the Frost design system.",
+                    kind: "crossover",
+                  },
+                  {
+                    year: "2026",
+                    title: "KAIROS — Multi-Agent Trading Intelligence System",
+                    desc:
+                      "Built KAIROS: a 5-agent AI system (William/Powell/Martha/Nathan/Gwen) delivering pre-market briefings via Discord every trading day, with Alpaca paper trading, signal backtesting, and sector rotation analysis.",
+                    kind: "tech",
                   },
                   {
                     year: "Future",

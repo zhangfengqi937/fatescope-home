@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 
-type Item = { date: string; version?: string; title: string; items?: string[]; scope?: 'WEB' | 'APP' };
-type Data = { web?: Omit<Item, 'scope'>[]; app?: Omit<Item, 'scope'>[] };
+type Item = { date: string; version?: string; title: string; items?: string[]; scope?: 'WEB' | 'APP' | 'KAIROS' };
+type Data = { web?: Omit<Item, 'scope'>[]; app?: Omit<Item, 'scope'>[]; kairos?: Omit<Item, 'scope'>[] };
 
 export default function TerminalChangelogDigest({ count = 4 }: { count?: number }) {
   const [list, setList] = useState<Item[]>([]);
@@ -15,6 +15,7 @@ export default function TerminalChangelogDigest({ count = 4 }: { count?: number 
         const all: Item[] = [
           ...(data.web || []).map(x => ({ ...x, scope: 'WEB' as const })),
           ...(data.app || []).map(x => ({ ...x, scope: 'APP' as const })),
+          ...(data.kairos || []).map(x => ({ ...x, scope: 'KAIROS' as const })),
         ]
           .sort((a, b) => (b.date || '').localeCompare(a.date || ''))
           .slice(0, count);
@@ -55,10 +56,14 @@ export default function TerminalChangelogDigest({ count = 4 }: { count?: number 
                 <span className="text-slate-300">{log.date}</span>
 
                 <span
-                  className="
-                    rounded px-1.5 py-[1px] text-[11px]
-                    border border-[#1f3b63] bg-[#0b223a] text-slate-200
-                  "
+                  className={[
+                    'rounded px-1.5 py-[1px] text-[11px] border',
+                    log.scope === 'KAIROS'
+                      ? 'border-amber-700/60 bg-amber-900/40 text-amber-300'
+                      : log.scope === 'APP'
+                        ? 'border-violet-700/60 bg-violet-900/40 text-violet-300'
+                        : 'border-[#1f3b63] bg-[#0b223a] text-slate-200',
+                  ].join(' ')}
                 >
                   {log.scope}
                 </span>

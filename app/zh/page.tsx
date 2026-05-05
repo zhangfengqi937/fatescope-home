@@ -75,21 +75,11 @@ export default function Home() {
             {/* 已上线功能 */}
             <h6 className="mt-4 text-[15px] font-medium text-slate-800">核心功能</h6>
             <ul className="text-base text-slate-700 list-disc ml-5 space-y-2 leading-7">
-
-            </ul>
-
-            {/* Coming Soon             <h6 className="text-[15px] font-medium text-slate-800 mb-2 flex items-center gap-2">
-              <span className="text-amber-500 text-lg">⏳</span>
-              Coming Soon
-            </h6>*/}
-
-            <ul className="text-base text-slate-700 list-disc ml-5 space-y-2 leading-7">
-              <li>占卜 —— 占卜特定事件，让选择不再孤单</li>
-              <li>灵魂故事 —— 生成你的前世今生剧本，以及与他人的灵魂羁绊</li>
-              <li>私人运势报告 —— 定制阶段性趋势与方向</li>
-              <li>人生蓝图 —— 人生使命、整体运势与核心课题指引</li>
-              <li>流年 / 流月 / 流日运势 —— 洞察关键节点</li>
-              <li>一对一深度解盘 —— 计划中的高级私人服务，提供更详细的个性化解读</li>
+              <li>命盘角色卡 —— RPG 六维属性（力量/智力/魅力/体力/灵巧/幸运）、35 种格局识别、30 个成就、10 种原型职业</li>
+              <li>合盘配对 —— 八字 × 紫微双引擎 10 维评分、灵魂宫镜像检测、双人月度时间线</li>
+              <li>流年运势 —— 17 层 V2 引擎预测流年/流月/流日，结构化运势卡片 + 十二宫流年轮盘</li>
+              <li>星谕议事厅 —— 14 位星曜人格圆桌讨论，RAG 知识库支撑，投票与共识输出</li>
+              <li>社交卡片 —— 三种竖版分享卡（命盘卡 / 流年卡 / 合盘卡），支持 PNG 导出</li>
             </ul>
 
 
@@ -593,6 +583,8 @@ export default function Home() {
                   { year: "2023", title: "启动 Side Projects", desc: "将工程栈与创作结合，探索「命理 × 文字 × 摄影」的表达边界，逐步面向疗愈与自我反思。", kind: "crossover" },
                   { year: "2024", title: "Fatescope App 雏形", desc: "自研命理引擎解读，提出「温柔而清晰」的指引理念，并与疗愈文字结合。", kind: "crossover" },
                   { year: "2025", title: "独立产品与频道上线", desc: "建立个人网站，发布独立混合命理引擎 Alpha，并开设疗愈文字与摄影频道。", kind: "healing" },
+                  { year: "2026", title: "Fatescope App v1.0 正式发布", desc: "上线完整版 Fatescope：命盘角色卡、合盘配对、流年 V2 引擎、星谕议事厅、社交卡片，以及 Frost 设计系统。", kind: "crossover" },
+                  { year: "2026", title: "KAIROS — 多智能体交易情报系统", desc: "构建 KAIROS：5 位 AI Agent（William/Powell/Martha/Nathan/Gwen）每个交易日盘前通过 Discord 推送情报简报，含 Alpaca 模拟交易、信号回测与板块轮动分析。", kind: "tech" },
                   { year: "未来", title: "持续探索", desc: "在「技术 × 灵性 × 创作 × 疗愈」的交汇点上，构建更广阔的共鸣与指引系统。", kind: "crossover" },
                 ].map((item, idx) => {
                   const now = new Date().getFullYear();
